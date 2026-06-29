@@ -34,11 +34,7 @@ public class BallSpawner : MonoBehaviour
         }
     }
 
-    public void SetLevel(int level)
-    {
-        currentSpawnInterval = Mathf.Max(1.2f, 3.5f - (level * 0.12f));
-        baseTierSpeed = Mathf.Min(4f + (level * 0.25f), 12f);
-    }
+    
 
     public void ApplyTierSettings(TierSettings settings)
     {

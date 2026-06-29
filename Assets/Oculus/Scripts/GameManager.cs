@@ -240,7 +240,6 @@ public class GameManager : MonoBehaviour
         if (accuracy >= 0.7f)
         {
             currentLevel++;
-            ballSpawner.SetLevel(currentLevel);
             ballsThisLevel = 0;
             correctThisLevel = 0;
             UpdateTargetPool();
@@ -254,7 +253,6 @@ public class GameManager : MonoBehaviour
         if (accuracy < 0.4f && currentLevel > 1)
         {
             currentLevel--;
-            ballSpawner.SetLevel(currentLevel);
             ballsThisLevel = 0;
             correctThisLevel = 0;
             UpdateTargetPool();
