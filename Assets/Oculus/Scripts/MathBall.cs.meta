@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 69623aba5b42149aeaf25db86faadd9d
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - playerCam: {instanceID: 0}
+  - textRendererPrefab: {fileID: 9059745222390773231, guid: 7a8a43e437d994497a49a01d50fc1770, type: 3}
+  - renderTextureTemplate: {fileID: 8400000, guid: 1ec668a318e384bc493ebeebcedba301, type: 2}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
