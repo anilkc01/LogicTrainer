@@ -160,6 +160,7 @@ MonoBehaviour:
   wrongSound: {fileID: 8300000, guid: 0d6ebee8bb85a4897b075e849c0c8b35, type: 3}
   missedCorrectSound: {fileID: 8300000, guid: 554af16c5c658428ca54ab35e0fc9617, type: 3}
   wrongHitPlayerSound: {fileID: 8300000, guid: 8c0b4e1724d2a4c5294159310b9a369a, type: 3}
+  floatingScorePrefab: {fileID: 7536671181511544848, guid: 2b27697cfa0ef403eaaeab585cbbe0a1, type: 3}
 --- !u!1 &6245251140215665094
 GameObject:
   m_ObjectHideFlags: 0

@@ -111,52 +111,60 @@ public class GameManager : MonoBehaviour
     }
 
     public void CorrectPunch(float velocity)
+{
+    int points = Mathf.Clamp(Mathf.RoundToInt(velocity), 1, 4);
+    score += points;
+    correctThisLevel++;
+    ballsThisLevel++;
+    currentStreak++;
+
+    TierManager.Instance.OnCorrectPunch(velocity);
+
+    if (ScorePopup.Instance != null) ScorePopup.Instance.Show("+" + points, true);
+
+    UpdateScoreUI();
+    UpdateStreakUI();
+    CheckLevelUp();
+    PlayHypeSound();
+}
+
+public void WrongPunch()
+{
+    ballsThisLevel++;
+    ResetStreak();
+    TierManager.Instance.OnWrongPunch();
+    LivesManager.Instance.LoseLife();
+    CheckLevelDown();
+
+    if (ScorePopup.Instance != null) ScorePopup.Instance.Show("-5", false);
+}
+
+public void MissedCorrectBall()
+{
+    ballsThisLevel++;
+    ResetStreak();
+    TierManager.Instance.OnMissedCorrect();
+
+    if (score == 0)
+        LivesManager.Instance.LoseLife();
+    else
     {
-        int points = Mathf.Clamp(Mathf.RoundToInt(velocity), 1, 4);
-        score += points;
-        correctThisLevel++;
-        ballsThisLevel++;
-        currentStreak++;
-
-        TierManager.Instance.OnCorrectPunch(velocity); // ← add
-
+        score = Mathf.Max(0, score - 5);
         UpdateScoreUI();
-        UpdateStreakUI();
-        CheckLevelUp();
-        PlayHypeSound();
     }
+    CheckLevelDown();
 
-    public void WrongPunch()
-    {
-        ballsThisLevel++;
-        ResetStreak();
-        TierManager.Instance.OnWrongPunch(); // ← add
-        LivesManager.Instance.LoseLife();
-        CheckLevelDown();
-    }
+    if (ScorePopup.Instance != null) ScorePopup.Instance.Show("-5", false);
+}
 
-    public void MissedCorrectBall()
-    {
-        ballsThisLevel++;
-        ResetStreak();
-        TierManager.Instance.OnMissedCorrect(); // ← add
+public void WrongBallReachedPlayer()
+{
+    ResetStreak();
+    TierManager.Instance.OnWrongHitPlayer();
+    LivesManager.Instance.LoseLife();
 
-        if (score == 0)
-            LivesManager.Instance.LoseLife();
-        else
-        {
-            score = Mathf.Max(0, score - 5);
-            UpdateScoreUI();
-        }
-        CheckLevelDown();
-    }
-
-    public void WrongBallReachedPlayer()
-    {
-        ResetStreak();
-        TierManager.Instance.OnWrongHitPlayer(); // ← add
-        LivesManager.Instance.LoseLife();
-    }
+    if (ScorePopup.Instance != null) ScorePopup.Instance.Show("-5", false);
+}
 
     void UpdateStreakUI()
     {
